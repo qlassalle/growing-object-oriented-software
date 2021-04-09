@@ -1,3 +1,6 @@
+import auctionsniper.Main;
+import auctionsniper.MainWindow;
+
 public class ApplicationRunner {
     public static final String XMPP_HOSTNAME = "localhost";
     public static final String SNIPER_ID = "sniper";
