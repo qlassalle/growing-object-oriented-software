@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Main implements  AuctionEventListener {
+public class Main implements  SniperListener {
 
     private static final int ARG_HOSTNAME = 0;
     private static final int ARG_USERNAME = 1;
@@ -38,7 +38,7 @@ public class Main implements  AuctionEventListener {
         disconnectWhenUICloses(connection);
         Chat chat = connection.getChatManager()
                               .createChat(auctionId(itemId, connection),
-                                          new AuctionMessageTranslator(this));
+                                          new AuctionMessageTranslator(new AuctionSniper(this)));
 
         this.notToBeGCd = chat;
         chat.sendMessage(JOIN_COMMAND_FORMAT);
@@ -72,12 +72,12 @@ public class Main implements  AuctionEventListener {
     }
 
     @Override
-    public void auctionClosed() {
+    public void sniperLost() {
         SwingUtilities.invokeLater(() -> ui.showStatus(MainWindow.STATUS_LOST));
     }
 
-    @Override
-    public void currentPrice(int price, int increment) {
-
-    }
+//    @Override
+//    public void currentPrice(int price, int increment) {
+//
+//    }
 }
