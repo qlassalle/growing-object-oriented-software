@@ -33,4 +33,13 @@ public class AuctionSniperTest {
 
         sniper.currentPrice(price, increment, AuctionEventListener.PriceSource.FromOtherBidder);
     }
+
+    @Test
+    public void reportsIsWinningWhenCurrentPriceComesFromSniper() {
+        context.checking(new Expectations() {{
+            atLeast(1).of(sniperListener).sniperWinning();
+        }});
+
+        sniper.currentPrice(123, 45, AuctionEventListener.PriceSource.FromSniper);
+    }
 }
