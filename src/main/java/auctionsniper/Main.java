@@ -121,7 +121,7 @@ public class Main {
         }
 
         private void showStatus(String status) {
-            SwingUtilities.invokeLater(() -> ui.showStatus(status));
+            SwingUtilities.invokeLater(() -> ui.showStatusText(status));
         }
     }
 
